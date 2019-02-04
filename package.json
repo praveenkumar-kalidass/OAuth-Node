@@ -9,7 +9,8 @@
     "migrate-undo": "sequelize db:migrate:undo",
     "seed": "sequelize db:seed:all",
     "seed-create": "sequelize seed:generate",
-    "seed-undo": "sequelize db:seed:undo:all"
+    "seed-undo": "sequelize db:seed:undo:all",
+    "lint": "eslint ."
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -25,6 +26,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "eslint": "^5.13.0",
     "nodemon": "^1.18.9",
     "sequelize-cli": "^5.4.0"
   }

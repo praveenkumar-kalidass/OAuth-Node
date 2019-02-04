@@ -25,6 +25,7 @@ let sequelize = new Sequelize(
     dialect: config.dialect,
     logging: Object.hasOwnProperty(config, 'logging')
       ? config.logging
+      // eslint-disable-next-line no-console
       : console.log
   }
 );
