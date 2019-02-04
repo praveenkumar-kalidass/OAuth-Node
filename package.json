@@ -6,7 +6,10 @@
     "start": "SET DEBUG=oauth-node-starter:* & node ./bin/www",
     "migrate": "sequelize db:migrate",
     "migration-create": "sequelize migration:create",
-    "migrate-undo": "sequelize db:migrate:undo"
+    "migrate-undo": "sequelize db:migrate:undo",
+    "seed": "sequelize db:seed:all",
+    "seed-create": "sequelize seed:generate",
+    "seed-undo": "sequelize db:seed:undo:all"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -15,8 +18,10 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
+    "password-hash": "^1.2.2",
     "pg": "^7.8.0",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "sequelize-cli": "^5.4.0"
