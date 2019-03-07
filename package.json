@@ -1,9 +1,11 @@
 {
   "name": "oauth-node-starter",
   "version": "1.0.0",
-  "private": true,
+  "description": "A UI showcase of social network statistics",
+  "main": "app.js",
   "scripts": {
     "start": "SET DEBUG=oauth-node-starter:* & nodemon ./bin/www",
+    "production": "SET NODE_ENV=production & node ./bin/www",
     "migrate": "sequelize db:migrate",
     "migration-create": "sequelize migration:create",
     "migrate-undo": "sequelize db:migrate:undo",
@@ -12,6 +14,23 @@
     "seed-undo": "sequelize db:seed:undo:all",
     "lint": "eslint ."
   },
+  "repository": "git+https://github.com/praveenkumar-outlook/OAuth-Node.git",
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "sequelize",
+    "oauth2",
+    "oauth2-server",
+    "postgresql",
+    "swagger",
+    "swagger-ui"
+  ],
+  "author": "Praveenkumar K <praveen.ece@outlook.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/praveenkumar-outlook/OAuth-Node/issues"
+  },
+  "homepage": "https://github.com/praveenkumar-outlook/OAuth-Node#readme",
   "dependencies": {
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
