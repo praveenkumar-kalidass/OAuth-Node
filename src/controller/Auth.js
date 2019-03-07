@@ -5,11 +5,19 @@ const oAuthService = new OAuthService();
 const router = express.Router();
 
 /**
- * OAuth2.0 Server
+ * @swagger
+ * components:
+ *  securitySchemes:
+ *    bearerAuth:
+ *      type: http
+ *      scheme: bearer
  */
 const oAuth = new OAuthServer({
   model: oAuthService,
-  allowEmptyState: true
+  allowEmptyState: true,
+  requireClientAuthentication: {
+    password: false
+  }
 });
 
 /**
@@ -32,7 +40,8 @@ const oAuth = new OAuthServer({
  *              password:
  *                type: string
  *              client_id:
- *                type: uuid
+ *                type: string
+ *                format: uuid
  *              client_secret:
  *                type: string
  *              grant_type:
@@ -89,12 +98,27 @@ router.post('/login', (request, response) => {
  *    description: Regenerate Access token using Refresh token
  *    tags:
  *      - Auth
- *    parameters:
- *      - name: code
- *        in: query
- *        schema:
- *          type: string
- *          description: Authentication code
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/x-www-form-urlencoded:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              client_id:
+ *                type: string
+ *                format: uuid
+ *              client_secret:
+ *                type: string
+ *              grant_type:
+ *                default: refresh_token
+ *              refresh_token:
+ *                type: string
+ *            required:
+ *              - client_id
+ *              - client_secret
+ *              - grant_type
+ *              - refresh_token
  *    responses:
  *      200:
  *        description: Authorization success

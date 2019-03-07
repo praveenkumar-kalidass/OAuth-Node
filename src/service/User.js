@@ -25,6 +25,20 @@ class UserService {
       return getUserCB(null, user);
     });
   }
+  /**
+   * Method to get User by ID
+   *
+   * @param  {UUID} userId
+   * @param  {Function} getUserCB
+   */
+  getUserById(userId, getUserCB) {
+    userDao.findUserById(userId, (findErr, user) => {
+      if (findErr) {
+        return getUserCB(findErr);
+      }
+      return getUserCB(null, user);
+    });
+  }
 }
 
 module.exports = UserService;

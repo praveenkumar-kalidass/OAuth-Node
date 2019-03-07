@@ -6,5 +6,8 @@
       "version": "1.0.0"
     }
   },
-  "apis": ["./src/controller/Auth.js"]
+  "apis": [
+    "./src/controller/Auth.js",
+    "./src/controller/User.js"
+  ]
 }

@@ -32,9 +32,22 @@ class UserDao {
         return getUserCB(null, user);
       }
       return getUserCB(new ServerError('Invalid Credentials'));
-    }, (getError) => {
-      return getUserCB(getError);
-    });
+    }, (getError) => (
+      getUserCB(getError)
+    ));
+  }
+  /**
+   * Dao to access user by ID
+   *
+   * @param  {UUID} id
+   * @param  {Function} findCB
+   */
+  findUserById(id, findCB) {
+    models.User.findById(id).then((user) => (
+      findCB(null, user)
+    ), (findErr) => (
+      findCB(findErr)
+    ));
   }
 }
 
