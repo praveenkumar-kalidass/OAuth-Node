@@ -74,6 +74,19 @@ class OAuthServer {
     });
   }
   /**
+   * OAuth Service to revoke the expired accesstoken
+   * @param  {Object} token
+   * @param  {Function} revokeCB
+   */
+  revokeToken(token, revokeCB) {
+    oAuthTokenService.revokeToken(token, (deleteErr, isDeleted) => {
+      if (deleteErr) {
+        return revokeCB(deleteErr);
+      }
+      return revokeCB(null, isDeleted);
+    });
+  }
+  /**
    * OAuth Service to save authorization code
    * @param  {String} code
    * @param  {Object} client

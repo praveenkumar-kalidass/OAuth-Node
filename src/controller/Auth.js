@@ -16,8 +16,8 @@ const oAuth = new OAuthServer({
  * @swagger
  * /api/auth/login:
  *  post:
- *    summary: Login to pass Authentication
- *    description: Login to pass Authentication
+ *    summary: Login to pass Authorization
+ *    description: Login to pass Authorization
  *    tags:
  *      - Auth
  *    requestBody:
@@ -48,9 +48,9 @@ const oAuth = new OAuthServer({
  *              - response_type
  *    responses:
  *      200:
- *        description: Authentication success
+ *        description: Authorization success
  *      401:
- *        description: Authentication failed
+ *        description: Authorization failed
  */
 router.post('/login', (request, response) => {
   let Request = new OAuthServer.Request(request);
@@ -83,7 +83,7 @@ router.post('/login', (request, response) => {
 
 /**
  * @swagger
- * /api/auth/authenticate:
+ * /api/auth/authorize:
  *  post:
  *    summary: Authenticate Refresh token
  *    description: Regenerate Access token using Refresh token
@@ -97,11 +97,11 @@ router.post('/login', (request, response) => {
  *          description: Authentication code
  *    responses:
  *      200:
- *        description: Authentication success
+ *        description: Authorization success
  *      401:
- *        description: Authentication failed
+ *        description: Authorization failed
  */
-router.post('/authenticate', (request, response) => {
+router.post('/authorize', (request, response) => {
   let Request = new OAuthServer.Request(request);
   let Response = new OAuthServer.Response(request);
   oAuth.token(

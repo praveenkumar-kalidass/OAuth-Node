@@ -76,6 +76,20 @@ class OAuthTokenService {
       return saveTokenCB(null, saveToken);
     });
   }
+  /**
+   * Method to revoke token from OAuth
+   *
+   * @param  {Object} token
+   * @param  {Function} revokeCB
+   */
+  revokeToken(token, revokeCB) {
+    oAuthTokenDao.deleteAccessToken(token, (deleteErr, isDeleted) => {
+      if (deleteErr) {
+        return revokeCB(deleteErr);
+      }
+      return revokeCB(null, isDeleted);
+    });
+  }
 }
 
 module.exports = OAuthTokenService;

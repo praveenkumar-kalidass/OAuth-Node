@@ -15,7 +15,7 @@ module.exports = {
         ]
       }),
       client_secret: passwordHash.generate('demo_client_secret'),
-      redirect_uri: 'authenticate'
+      redirect_uri: 'authorize'
     }], {});
   },
   down: (queryInterface) => {

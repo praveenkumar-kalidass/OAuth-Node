@@ -72,6 +72,28 @@ class OAuthTokenDao {
       return saveTokenCB(createErr);
     });
   }
+  /**
+   * Dao to delete AccessToken based on refreshToken
+   * 
+   * @param  {Object} token
+   * @param  {Function} deleteCB
+   */
+  deleteAccessToken(token, deleteCB) {
+    models.OAuthToken.destroy({
+      where: {
+        refreshToken: token.refreshToken,
+        clientId: token.client.id,
+        userId: token.user.id
+      }
+    }).then((token) => {
+      if (!token) {
+        return deleteCB(null, false);
+      }
+      return deleteCB(null, true);
+    }, (deleteErr) => {
+      return deleteCB(deleteErr);
+    });
+  }
 }
 
 module.exports = OAuthTokenDao;
